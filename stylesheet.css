@@ -1,0 +1,32 @@
+body {
+  padding: 100px 150px;
+}
+
+.box {
+  width: 200px;
+  height: 304px;
+  position: relative;
+  perspective: 800px;
+  cursor: url('./assets/buy1.png'), auto;
+}
+
+img {
+  width: 200px;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transform: translate(0px, 0px);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}

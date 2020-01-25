@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>title</title>
+    <link rel="prefetch" href="assets/front-transparent.png" />
+    <link rel="prefetch" href="assets/back-transparent.png" />
+    <link rel="prefetch" href="assets/buy1.png" />
+    <link rel="prefetch" href="assets/buy1.png" />
+    <link rel="prefetch" href="assets/buy2.png" />
+    <link rel="prefetch" href="assets/buy3.png" />
+    <link rel="prefetch" href="assets/buy4.png" />
+    <link rel="prefetch" href="assets/buy5.png" />
+    <link rel="prefetch" href="assets/buy6.png" />
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+  </head>
+  <body>
+    <div class="box" id="box">
+      <div class="card">
+        <div class="card-front">
+          <img src="assets/front-transparent.png" />
+        </div>
+        <div class="card-back">
+          <img src="assets/back-transparent.png" />
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="vendor/gsap.min.js"></script>
+    <script type="text/javascript">
+      function autorun() {
+        var tl = gsap.timeline({ id: 'flipcard', repeat: -1 });
+        tl.to('.card', {
+          duration: 1,
+          rotationY: 180,
+          ease: 'none',
+          id: 'front-to-back'
+        }).to('.card', {
+          duration: 1,
+          rotationY: 360,
+          ease: 'none',
+          id: 'back-to-front'
+        });
+
+        var box = document.getElementById('box');
+
+        box.addEventListener(
+          'mouseover',
+          function(event) {
+            interval = setInterval(function() {
+              event.target.style.cursor = `url(./assets/buy${gsap.utils.random(
+                1,
+                6,
+                1
+              )}.png),auto`;
+            }, 200);
+          },
+          true
+        );
+
+        box.addEventListener('mouseout', function(event) {
+          clearInterval(interval);
+        });
+      }
+      if (document.addEventListener)
+        document.addEventListener('DOMContentLoaded', autorun, false);
+      else if (document.attachEvent)
+        document.attachEvent('onreadystatechange', autorun);
+      else window.onload = autorun;
+    </script>
+  </body>
+</html>
