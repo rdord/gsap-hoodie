@@ -17,13 +17,15 @@
     <link rel="stylesheet" href="stylesheet.css" type="text/css" />
   </head>
   <body>
-    <div class="box" id="box">
-      <div class="card">
-        <div class="card-front">
-          <img src="assets/front-transparent.png" />
-        </div>
-        <div class="card-back">
-          <img src="assets/back-transparent.png" />
+    <div id="box-container" class="box-container">
+      <div class="box">
+        <div class="card">
+          <div class="card-front">
+            <img src="assets/front-transparent.png" />
+          </div>
+          <div class="card-back">
+            <img src="assets/back-transparent.png" />
+          </div>
         </div>
       </div>
     </div>
@@ -31,22 +33,20 @@
     <script type="text/javascript" src="vendor/gsap.min.js"></script>
     <script type="text/javascript">
       function autorun() {
-        var tl = gsap.timeline({ id: 'flipcard', repeat: -1 });
+        var tl = gsap.timeline({ repeat: -1 });
         tl.to('.card', {
           duration: 1,
           rotationY: 180,
-          ease: 'none',
-          id: 'front-to-back'
+          ease: 'none'
         }).to('.card', {
           duration: 1,
           rotationY: 360,
-          ease: 'none',
-          id: 'back-to-front'
+          ease: 'none'
         });
 
-        var box = document.getElementById('box');
+        var boxContainer = document.getElementById('box-container');
 
-        box.addEventListener(
+        boxContainer.addEventListener(
           'mouseover',
           function(event) {
             interval = setInterval(function() {
@@ -60,7 +60,7 @@
           true
         );
 
-        box.addEventListener('mouseout', function(event) {
+        boxContainer.addEventListener('mouseout', function(event) {
           clearInterval(interval);
         });
       }

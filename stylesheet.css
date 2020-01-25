@@ -1,5 +1,13 @@
 body {
-  padding: 100px 150px;
+  padding: 50px 100px;
+}
+
+.box-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 260px;
+  height: 350px;
 }
 
 .box {
